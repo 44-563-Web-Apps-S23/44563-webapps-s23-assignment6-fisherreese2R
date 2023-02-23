@@ -18,9 +18,7 @@
     <input type="button" onclick="checkPainter()" value="check the guess">
 </form>
 
-
-<p id="goodCount">Good = 0</p>
-<p id="oopsCount">oops = 0</p>
+<p id="result">This text will be replaced </p>
 
 
 <script> 
@@ -30,17 +28,15 @@
 function checkPainter (){
     hiddenPainter = document.getElementById("form1_Painter").value
     guessPainter = document.getElementById("form1_guess").value
-    goodOut = document.getElementById("goodCount")
-    oopsOut = document.getElementById("oopsCount")
+    result = document.getElementById("result")
     if(hiddenPainter === guessPainter){
         good += 1;
-        goodOut.innerHTML = "Good = " + good;
         alert("You got it right")
     } else {
         oops += 1;
-        oopsOut.innerHTML = "oops = " + oops;
         alert("Sorry!!!")
     }
+    result.innerHTML = "Good = " + good + " <br>oops = " + oops;
 }
 </script>
 
