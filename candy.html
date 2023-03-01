@@ -21,8 +21,18 @@
     <input type="button" onclick="selectBox()" value="Select a box">
 </form>
 
+<form>
+    <label for="form1_age">Enter the size</label>
+    <input type ="text" id="form1_size" name="form1_age" value= "size"> <br>
+
+    <label for="form1_nick">Enter price</label>
+    <input type ="text" id="form1_price" name="form1_nick" autofocus> <br>
+
+    <input type="button" onclick="updateBox()" value="Update the box">
+</form>
 
 <p id="result">This text will be replaced </p>
+
 
 <script> 
     var my_candy_box = {}
@@ -48,6 +58,17 @@ function selectBox (){
         my_candy_box.chewy = true
     }
 
+    out.innerHTML = JSON.stringify(my_candy_box)
+}
+
+function updateBox(){
+    sizes = document.getElementById("form1_size").value
+    prices = document.getElementById("form1_price").value
+    out = document.getElementById("result")
+    out.innerHTML = "isdjlfjdslk"
+
+    my_candy_box.size = sizes
+    my_candy_box.price = prices
     out.innerHTML = JSON.stringify(my_candy_box)
 }
 </script>
