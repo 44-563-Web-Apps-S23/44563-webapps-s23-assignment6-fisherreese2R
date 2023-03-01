@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Assignment 6 Candy Choosing</title>
+    </head>
+ 
+<body>
+
+<h2>Fisher Reese chooses cnady</h2>
+
+<form>
+    <label for="form1_DarkChocolate" value = "true">Dark Chocolate</label>
+    <input type ="checkbox" id="form1_DarkChocolate" > <br>
+
+    <label for="form1_Nuts" value = "true">Nuts</label>
+    <input type ="checkbox" id="form1_Nuts" value="true"> <br>
+
+    <label for="form1_Chewy" value = "true">Chewy</label>
+    <input type ="checkbox" id="form1_Chewy" value="false"> <br>
+
+    <input type="button" onclick="selectBox()" value="Select a box">
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<script> 
+    var my_candy_box = {}
+    out = document.getElementById("result")
+    darkChocolate = document.getElementById("form1_DarkChocolate");
+    Nuts = document.getElementById("form1_Nuts");
+    Chewy = document.getElementById("form1_Chewy");
+
+function selectBox (){
+    my_candy_box = {}
+
+    my_candy_box.dark = false
+    my_candy_box.nuts = false
+    my_candy_box.chewy = false
+
+    if(darkChocolate.checked){
+        my_candy_box.dark = true
+    }
+    if(Nuts.checked){
+        my_candy_box.nuts = true
+    }
+    if(Chewy.checked){
+        my_candy_box.chewy = true
+    }
+
+    out.innerHTML = JSON.stringify(my_candy_box)
+}
+</script>
+
+</body>
+</html> 
