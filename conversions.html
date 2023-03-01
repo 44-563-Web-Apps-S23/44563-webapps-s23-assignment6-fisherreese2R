@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Assignment 6 Coversion Generator</title>
+</head>
+ 
+<body>
+
+<h2>Fisher Reese shows Currency Coversions</h2>
+
+<form>
+    <label for="form1_baseNum2">Enter base amount </label>
+    <input type ="number" id="form1_baseNum" value=50> <br>
+
+    <label for="form1_convertNum2">Enter the conversion rate</label>
+    <input type ="number" id="form1_convertNum" value=35> <br>
+
+    <input type="button" onclick="convert()" value="Show conversions">
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<script> 
+
+function convert(){
+    baseAmount = document.getElementById("form1_baseNum").value
+    convertRate = document.getElementById("form1_convertNum").value
+    out = document.getElementById("result")
+    toShow = ""
+
+    for(let i = 0; i < 6; i++){
+        if(i == 1){
+            base = baseAmount * convertRate
+            toShow = baseAmount + " is " + base + "; "
+        }
+        else if(i == 2){
+            basex2 = baseAmount * 2
+            toShow += (basex2) + " is " + (basex2 * convertRate) + "; "
+        }
+        else if(i == 3){
+            basex4 = baseAmount * 4
+            toShow += (basex4) + " is " + (basex4 * convertRate) + "; "
+        }
+        else if(i == 4){
+            basex8 = baseAmount * 8
+            toShow += (basex8) + " is " + (basex8 * convertRate) + "; "
+        }
+        else if(i == 5){
+            basex16 = baseAmount * 16
+            toShow += (basex16) + " is " + (basex16 * convertRate) + ";"
+        }
+    }
+    out.innerHTML = "Conversions are: " + toShow
+}
+</script>
+
+</body>
+</html> 
