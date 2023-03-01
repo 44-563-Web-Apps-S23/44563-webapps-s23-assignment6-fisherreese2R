@@ -20,10 +20,37 @@
 
 <p id="result">This text will be replaced </p>
 
+<div class = "container">
+    <img id="imgmov" src="images/FatasiaImg.jpg"  Height="100px" width="100px" onclick="selectImage()">
+</div>
+
 
 <script> 
     let good = 0;
     let oops = 0;
+    useImage = 1;
+
+function selectImage(){
+    switch(useImage){
+        case 1:
+            document.getElementById("imgmov").src = "images/RoseImg.jpg"
+            useImage++
+            break;
+        case 2:
+            document.getElementById("imgmov").src = "images/ElephantEarImg.jpg"
+            useImage++
+            break;
+        case 3:
+            document.getElementById("imgmov").src = "images/FatasiaImg.jpg"
+            useImage = 1
+            break;
+        default:
+            Imgmov.src = "images/ElephantEarImg.jpg"
+            useImage++
+            break;
+
+    }
+}
 
 function checkPainter (){
     hiddenPainter = document.getElementById("form1_Painter").value
