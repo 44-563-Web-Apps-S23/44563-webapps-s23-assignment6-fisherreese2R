@@ -18,11 +18,29 @@
 
     <input type="button" onclick="convert()" value="Show conversions">
 </form>
-
-
 <p id="result">This text will be replaced </p>
 
+
+<form>
+    <input type="radio" id="Average" name="func" value="mean" onclick="chooseOp()">
+    <label for="rg1_red">Average</label></br>
+  
+    <input type="radio" id="Max" name="func" value="maximum"  onclick="chooseOp()">
+    <label for="rg1_blue">Max</label></br>
+  
+    <input type="radio" id="Min" name="func" value="minimum" onclick="chooseOp()">
+    <label for="rg1_green">min</label></br>
+  </form>
+
+
+<p id="result2">This text will be replaced </p>
+
 <script> 
+    baseAmount = document.getElementById("form1_baseNum").value
+    convertRate = document.getElementById("form1_convertNum").value
+    mean = document.getElementById("Average")
+    max = document.getElementById("Max")
+    min = document.getElementById("Min")
 
 function convert(){
     baseAmount = document.getElementById("form1_baseNum").value
@@ -30,29 +48,44 @@ function convert(){
     out = document.getElementById("result")
     toShow = ""
 
-    for(let i = 0; i < 6; i++){
-        if(i == 1){
-            base = baseAmount * convertRate
-            toShow = baseAmount + " is " + base + "; "
+    for(let i = 0; i < 5; i++){
+        toShow = toShow + baseAmount + " is " + baseAmount * convertRate + "; ";
+        baseAmount = baseAmount * 2;
+    }
+
+    baseAmount = document.getElementById("form1_baseNum").value
+    out.innerHTML = "Conversions are: " + toShow
+}
+
+function chooseOp(){
+    baseAmountChoose = document.getElementById("form1_baseNum").value
+    convertRateChoose = document.getElementById("form1_convertNum").value
+    num1 = parseFloat(baseAmountChoose)
+    num2 = parseFloat(convertRateChoose)
+    out = document.getElementById("result2")
+
+    if(mean.checked){
+        total = num1 + num2
+        out.innerHTML = "Average of " + baseAmountChoose + " and " + convertRateChoose + " is " + (total / 2)
+    }
+    else if(max.checked){
+        if(baseAmountChoose > convertRateChoose){
+            out.innerHTML = "Max of " + baseAmountChoose + " and " + convertRateChoose + " is " + baseAmountChoose
         }
-        else if(i == 2){
-            basex2 = baseAmount * 2
-            toShow += (basex2) + " is " + (basex2 * convertRate) + "; "
-        }
-        else if(i == 3){
-            basex4 = baseAmount * 4
-            toShow += (basex4) + " is " + (basex4 * convertRate) + "; "
-        }
-        else if(i == 4){
-            basex8 = baseAmount * 8
-            toShow += (basex8) + " is " + (basex8 * convertRate) + "; "
-        }
-        else if(i == 5){
-            basex16 = baseAmount * 16
-            toShow += (basex16) + " is " + (basex16 * convertRate) + ";"
+        else if(baseAmountChoose < convertRateChoose){
+            out.innerHTML = "Max of " + baseAmountChoose + " and " + convertRateChoose + " is " + convertRateChoose
         }
     }
-    out.innerHTML = "Conversions are: " + toShow
+    else if(min.checked){
+        if(baseAmountChoose < convertRateChoose){
+            out.innerHTML = "Min of " + baseAmountChoose + " and " + convertRateChoose + " is " + baseAmountChoose
+        }
+        else if(baseAmountChoose > convertRateChoose){
+            out.innerHTML = "Min of " + baseAmountChoose + " and " + convertRateChoose + " is " + convertRateChoose
+
+}
+
+    }
 }
 </script>
 
